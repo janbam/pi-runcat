@@ -5,9 +5,11 @@ import type {
 } from "@earendil-works/pi-coding-agent";
 
 const RUNCAT_INDICATOR: WorkingIndicatorOptions = {
-  // These are Unicode Private Use Area code points from the RunCat icon font:
-  // U+E900 U+E901 U+E902 U+E903 U+E904. They render as animation frames when the correct FONT is loaded.
-  frames: [" ", " ", " ", " ", " "],
+  // These are Plane 16 Private Use Area code points from the RunCat icon font:
+  // U+100000 U+100001 U+100002 U+100003 U+100004. They render as animation frames
+  // when the matching FONT is loaded. This avoids the observed CJK/text-font
+  // collisions; extension and font versions must still be updated together.
+  frames: ["\u{100000} ", "\u{100001} ", "\u{100002} ", "\u{100003} ", "\u{100004} "],
   intervalMs: 167,
 };
 function applyRunCatIndicator(ctx: ExtensionContext) {
